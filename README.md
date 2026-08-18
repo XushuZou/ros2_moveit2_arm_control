@@ -1,4 +1,4 @@
-# ROS 2 + MoveIt 2 六自由度机械臂控制保姆级教程
+# ROS 2 + MoveIt 2 六自由度机械臂控制
 
 
 本项目围绕“如何让一个 ROS 2 机械臂从模型描述走到可规划、可执行、可通信控制”的完整过程，搭建了六自由度机械臂与夹爪的 MoveIt 2 仿真控制系统。重点在于理解建模、状态发布、运动规划、轨迹执行和外部任务指令之间的连接关系。
@@ -7,7 +7,7 @@ URDF 与 Xacro 描述机械臂和夹爪的连杆、关节、运动范围、碰�
 
 上层的 `Commander` 节点基于 MoveIt C++ API，封装了命名位姿、关节角、末端位姿、笛卡尔路径和夹爪开闭控制；其他 ROS 2 节点或终端只需发布任务目标即可调用这些能力。
 
-通过本项目可以学习 ROS 2 功能包组织、URDF/Xacro 建模、TF、RViz、MoveIt 规划配置、`ros2_control`、`FakeSystem`、Launch 文件、ROS 2 话题、自定义消息和 MoveIt C++ API，并建立对机器人控制系统分层结构的整体认识。
+通过本项目可以学习 ROS 2 功能包组织、URDF/Xacro 建模、TF、RViz、MoveIt 规划配置、`ros2_control`、Launch 文件、ROS 2 话题、自定义消息和 MoveIt C++ API，并建立对机器人控制系统分层结构的整体认识。
 
 ## 功能范围
 
@@ -36,7 +36,7 @@ URDF 与 Xacro 描述机械臂和夹爪的连杆、关节、运动范围、碰�
 
 ```bash
 git clone https://github.com/XushuZou/ros2_moveit2_arm_control.git
-cd ros2-moveit2-arm-control-tutorial/ros2_ws
+cd ros2_moveit2_arm_control/ros2_ws
 colcon build
 source install/setup.bash
 ```
@@ -46,7 +46,7 @@ source install/setup.bash
 在第一个终端启动机器人、MoveIt 和 RViz：
 
 ```bash
-cd ros2-moveit2-arm-control-tutorial/ros2_ws
+cd ros2_moveit2_arm_control/ros2_ws
 source install/setup.bash
 ros2 launch my_robot_bringup my_robot.launch.xml
 ```
@@ -54,7 +54,7 @@ ros2 launch my_robot_bringup my_robot.launch.xml
 在第二个终端运行测试节点：
 
 ```bash
-cd ros2-moveit2-arm-control-tutorial/ros2_ws
+cd ros2_moveit2_arm_control/ros2_ws
 source install/setup.bash
 ros2 run my_robot_commander_cpp test_moveit
 ```
@@ -67,7 +67,7 @@ ros2 run my_robot_commander_cpp test_moveit
 构建并运行 Commander：
 
 ```bash
-cd ros2-moveit2-arm-control-tutorial/ros2_ws
+cd ros2_moveit2_arm_control/ros2_ws
 colcon build --packages-select my_robot_commander_cpp
 source install/setup.bash
 ros2 run my_robot_commander_cpp commander_template
@@ -76,7 +76,7 @@ ros2 run my_robot_commander_cpp commander_template
 运行 Commander 前，需在另一个终端启动 bringup：
 
 ```bash
-cd ros2-moveit2-arm-control-tutorial/ros2_ws
+cd ros2_moveit2_arm_control/ros2_ws
 source install/setup.bash
 ros2 launch my_robot_bringup my_robot.launch.xml
 ```
